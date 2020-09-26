@@ -1,0 +1,87 @@
+<template>
+<lightning-card title="All Categories list" icon-name="custom:custom14">
+    <div class="slds-var-m-around_medium">
+        <!---Feature  Accordion starts -->
+        <lightning-accordion allow-multiple-sections-open>
+            <template if:true={isFeatureListAvailable}>
+                <template for:each={formatedResult.featurelist} for:item="feature">
+                    <!---Feature Accordion section  starts -->
+                    <lightning-accordion-section key={feature.Id} name={feature.Name} label={feature.Name}>
+                        <!---Profile Accordion starts -->
+                        <lightning-accordion allow-multiple-sections-open>
+                            <template if:true={isProfileListAvailable}>
+                                <template for:each={formatedResult.profilelist} for:item="profile">
+                                    <c-tester-child-component key={profile.Name}
+                                     details={profile}
+                                     parent-id={feature.Id}
+                                     property="Feature__c"
+                                     >
+                                        <!---Object Accordion starts -->
+                                        <lightning-accordion allow-multiple-sections-open>
+                                            <template if:true={isObjectListAvailable}>
+                                                    <template for:each={formatedResult.objectList} for:item="object">
+                                                        <c-tester-child-component
+                                                         key={object.Name}
+                                                         details={object} 
+                                                         parent-id={profile.Id}
+                                                         property="Profile__c">
+                                                            <!---Permission Accordion starts -->
+                                                                <template if:true={isPermissionListAvailable}>
+                                                                    <template for:each={formatedResult.permissionList} for:item="permission">
+                                                                        <c-tester-permission-list 
+                                                                            object-name={object.Name}
+                                                                            key={permission.Name}
+                                                                            details={permission}
+                                                                            parent-id={object.Id}
+                                                                            property="Object__c">
+                                                                            <template if:true={isInstructionListAvailable}>
+                                                                                <template for:each={formatedResult.instructionList} for:item="instruction">
+                                                                                    <c-tester-instructions key={instruction.Name} details={instruction} parent-id={permission.Id}
+                                                                                        property="Permission__c"></c-tester-instructions>
+                                                                                </template>
+                                                                            </template>
+                                                                        </c-tester-permission-list>
+
+
+                                                                        
+                                                                        <!-- <c-tester-child-component
+                                                                         key={object.Name} 
+                                                                         details={permission}
+                                                                         parent-id={object.Id}
+                                                                         property="Object__c">
+                                                                           <c-tester-permission-list list={permission.Permissions__c}></c-tester-permission-list>
+                                                                                <template if:true={isInstructionListAvailable}>
+                                                                                    <template for:each={formatedResult.instructionList} for:item="instruction">
+                                                                                        <c-tester-instructions
+                                                                                        key={instruction.Name} 
+                                                                                        details={instruction}
+                                                                                        parent-id={permission.Id}
+                                                                                        property="Permission__c"
+                                                                                        ></c-tester-instructions>
+                                                                                    </template>
+                                                                                </template>
+=
+                                                                        </c-tester-child-component> -->
+                                                                    </template>
+                                                                </template>
+
+                                                            <!---Permission Accordion starts -->
+                                                        </c-tester-child-component>
+                                                    </template>
+                                            </template>
+                                        </lightning-accordion>
+                                    <!---Object Accordion End -->
+                                    </c-tester-child-component>
+                                </template>
+                            </template>
+                        </lightning-accordion>
+                        <!---Profile Accordion Ends-->
+                    </lightning-accordion-section>
+                </template>
+            </template>
+        </lightning-accordion>
+    </div>
+</lightning-card>
+
+</template>
+

@@ -1,0 +1,7 @@
+<template>
+    <template if:true={showData}>
+        <lightning-accordion-section name={details.Name} label={details.Name} class="profileColor">
+            <slot></slot>
+        </lightning-accordion-section>
+    </template>
+</template>

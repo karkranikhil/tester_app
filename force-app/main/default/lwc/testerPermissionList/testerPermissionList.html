@@ -1,0 +1,18 @@
+<template>
+    <template if:true={isAvailable}>
+        <lightning-layout class="layout_design">
+            <lightning-layout-item class="layout_design" padding="around-small">
+                <template if:true={result}>
+                    <template for:each={result} for:item="item">
+                        <div class="header_column" key={item.label}>
+                            <p class="title">{item.label}</p>
+                            <p class="bold">{item.value}</p>
+                        </div>
+                    </template>
+                </template>
+            </lightning-layout-item>
+        </lightning-layout>
+        <slot></slot>
+    </template>
+    
+</template>
