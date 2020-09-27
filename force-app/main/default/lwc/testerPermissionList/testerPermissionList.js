@@ -12,9 +12,9 @@ export default class TesterPermissionList extends LightningElement {
     //     return "hello"
     // }
     get isAvailable(){
-        console.log(this.property)
-        console.log(this.parentId)
-        console.log(this.eachPermission)
+        // console.log(this.property)
+        // console.log(this.parentId)
+        // console.log(this.eachPermission)
         return this.parentId && this.property && this.eachPermission && this.eachPermission[this.property] === this.parentId ? true :false
     }
     get details(){

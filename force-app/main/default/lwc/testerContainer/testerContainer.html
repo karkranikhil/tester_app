@@ -1,4 +1,22 @@
 <template>
+    <!--FIltering-->
+    <lightning-card title="Filtering list" icon-name="custom:custom14">
+        <div class="slds-var-m-around_medium">
+            <div class="slds-grid slds-gutters">
+                <div class="slds-col">
+                    <lightning-combobox name="featurelist" label="Features" value={selectedFeature} placeholder="Select feature" options={featureList}
+                        onchange={handleChange} ></lightning-combobox>
+                </div>
+                <div class="slds-col">
+                    <lightning-combobox name="profilelist" label="Profile" value={selectedProfile} placeholder="Select profile" options={profileList}
+                        onchange={handleChange} disabled={disableProfile}></lightning-combobox>
+                </div>
+            </div>
+        </div>
+    </lightning-card>
+
+
+    <!--filtering end-->
 <lightning-card title="All Categories list" icon-name="custom:custom14">
     <div class="slds-var-m-around_medium">
         <!---Feature  Accordion starts -->
